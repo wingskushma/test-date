@@ -7,15 +7,8 @@ export default createStore({
     },
   },
   getters: {
-    formattedDateList: (state) => {
-      let formattedList = [];
-      formattedList.push(
-        new Date(state.dateStore.enteredDate).toLocaleDateString("pl-PL")
-      );
-      formattedList.push(
-        new Date(state.dateStore.enteredDate).toLocaleDateString("hu-HU")
-      );
-      return formattedList;
+    getEnteredDate: (state) => {
+      return state.dateStore.enteredDate;
     },
   },
   _mutations: {

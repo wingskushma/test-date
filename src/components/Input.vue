@@ -11,11 +11,6 @@
 
 <script>
 export default {
-  // data: function () {
-  //   return {
-  //     inputDate: this.$store.state.dateStore.enteredDate,
-  //   };
-  // },
   computed: {
     inputDate: {
       get: function () {
@@ -26,11 +21,6 @@ export default {
       },
     },
   },
-  // methods: {
-  //   sendInputDateToStore() {
-  //     this.$store.commit("changeDate", this.inputDate);
-  //   },
-  // },
 };
 </script>
 
