@@ -18,10 +18,16 @@ export default createStore({
       return formattedList;
     },
   },
-  mutations: {
-    changeDate(state, payload){
+  _mutations: {
+    changeDate(state, payload) {
       state.dateStore.enteredDate = payload;
     },
+  },
+  get mutations() {
+    return this._mutations;
+  },
+  set mutations(value) {
+    this._mutations = value;
   },
   actions: {},
   modules: {},

@@ -17,11 +17,6 @@ import Input from "@/components/Input.vue";
 import Output from "@/components/Output.vue";
 
 export default {
-  data: function () {
-    return {
-      givenInput: "1991-10-12",
-    };
-  },
   name: "Home",
   components: {
     Input,
