@@ -6,7 +6,7 @@
     id="date"
     name="date"
     placeholder="Enter the date in ISO format"
-    @keyup="passInputDate()"
+    @keyup="sendInputDateToStore()"
   />
 </template>
 
@@ -14,12 +14,12 @@
 export default {
   data: function () {
     return {
-      inputDate: "1991-10-12",
+      inputDate: this.$store.state.dateStore.enteredDate,
     };
   },
   methods: {
-    passInputDate() {
-      this.$emit("passInputDate", this.inputDate);
+    sendInputDateToStore() {
+      this.$store.commit("changeDate", this.inputDate);
     },
   },
 };

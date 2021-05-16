@@ -2,10 +2,10 @@
   <div class="home">
     <div class="container">
       <div class="row">
-        <Input @pass-input-date="passInputDate($event)" />
+        <Input />
       </div>
       <div class="row">
-        <Output :givenInput="givenInput"/>
+        <Output />
       </div>
     </div>
   </div>
@@ -26,13 +26,6 @@ export default {
   components: {
     Input,
     Output,
-  },
-  methods: {
-    passInputDate(val) {
-      this.givenInput = val;
-      console.log(val);
-      console.log("test "+ this.givenInput);
-    },
   },
 };
 </script>

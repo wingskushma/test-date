@@ -14,5 +14,6 @@ module.exports = {
     "vue/no-multiple-template-root": "off",
     "no-unused-vars": "off",
     "no-use-before-define": "off",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
   },
 };
