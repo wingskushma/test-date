@@ -6,22 +6,31 @@
     id="date"
     name="date"
     placeholder="Enter the date in ISO format"
-    @keyup="sendInputDateToStore()"
   />
 </template>
 
 <script>
 export default {
-  data: function () {
-    return {
-      inputDate: this.$store.state.dateStore.enteredDate,
-    };
-  },
-  methods: {
-    sendInputDateToStore() {
-      this.$store.commit("changeDate", this.inputDate);
+  // data: function () {
+  //   return {
+  //     inputDate: this.$store.state.dateStore.enteredDate,
+  //   };
+  // },
+  computed: {
+    inputDate: {
+      get: function () {
+        return this.$store.state.dateStore.enteredDate;
+      },
+      set: function (val) {
+        this.$store.commit("changeDate", val);
+      },
     },
   },
+  // methods: {
+  //   sendInputDateToStore() {
+  //     this.$store.commit("changeDate", this.inputDate);
+  //   },
+  // },
 };
 </script>
 
