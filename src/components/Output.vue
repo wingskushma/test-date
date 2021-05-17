@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <ul v-for="item in $store.getters.formattedDateList" :key="item.id">
+    <ul v-for="item in formattedDateList" :key="item.id">
       <li>{{ item }}</li>
     </ul>
   </div>
@@ -14,6 +14,7 @@ export default {
       const enteredDate = this.$store.getters.getEnteredDate;
       formattedList.push(new Date(enteredDate).toLocaleDateString("pl-PL"));
       formattedList.push(new Date(enteredDate).toLocaleDateString("hu-HU"));
+      console.log(formattedList);
       return formattedList;
     },
   },
