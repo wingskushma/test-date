@@ -3,25 +3,31 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     dateStore: {
-      enteredDate: "1991-12-15",
-    },
+      enteredDates: []
+    }
   },
   getters: {
-    getEnteredDate: (state) => {
-      return state.dateStore.enteredDate;
+    getEnteredDate: state => {
+      return state.dateStore.enteredDates;
+    }
+  },
+  mutations: {
+    updateDate(state, dates) {
+      state.dateStore.enteredDates = dates;
+    }
+  },
+  actions: {
+    addDate(ctx, date) {
+      let storedDates = JSON.parse(localStorage.getItem("dates")) || [];
+      storedDates.push(date);
+      localStorage.setItem("dates", JSON.stringify(storedDates));
+      ctx.commit("updateDate", storedDates);
     },
+    syncLocalstorageToState(ctx) {
+      const storedDates = JSON.parse(localStorage.getItem("dates")) || [];
+      localStorage.setItem("dates", JSON.stringify(storedDates));
+      ctx.commit("updateDate", storedDates);
+    }
   },
-  _mutations: {
-    changeDate(state, payload) {
-      state.dateStore.enteredDate = payload;
-    },
-  },
-  get mutations() {
-    return this._mutations;
-  },
-  set mutations(value) {
-    this._mutations = value;
-  },
-  actions: {},
-  modules: {},
+  modules: {}
 });

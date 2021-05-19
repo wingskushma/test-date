@@ -11,16 +11,25 @@
 
 <script>
 export default {
-  computed: {
-    inputDate: {
-      get: function () {
-        return this.$store.state.dateStore.enteredDate;
-      },
-      set: function (val) {
-        this.$store.commit("changeDate", val);
-      },
-    },
+  data() {
+    return {
+      inputDate: null
+    };
   },
+  mounted() {
+    this.$store.dispatch("syncLocalstorageToState");
+  },
+  methods: {
+    isValidDate(str) {
+      return /\d{4}-\d{2}-\d{2}/.test(str);
+    }
+  },
+  watch: {
+    inputDate() {
+      if (this.isValidDate(this.inputDate))
+        this.$store.dispatch("addDate", this.inputDate);
+    }
+  }
 };
 </script>
 
